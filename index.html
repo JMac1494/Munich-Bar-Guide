@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munich Stag Weekend — Bar Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@1&display=swap');
+
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #161616;
+    --bg3: #1e1e1e;
+    --border: #2a2a2a;
+    --gold: #c9963a;
+    --gold-light: #e8b84b;
+    --cream: #f0ead8;
+    --muted: #888;
+    --text: #e8e0d0;
+    --green: #4a8c5c;
+    --amber: #c9963a;
+    --red: #c94a3a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding-bottom: 80px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,150,58,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 10vw, 96px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 17px;
+    margin-top: 20px;
+    margin-bottom: 32px;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-stat .label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* NAV TABS */
+  .nav-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 16px;
+  }
+
+  .nav-tabs::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    padding: 14px 20px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-tab:hover { color: var(--cream); }
+  .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* MAIN */
+  .section {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .section.active { display: block; }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .section-desc {
+    color: var(--muted);
+    margin-top: 8px;
+    font-size: 14px;
+    max-width: 560px;
+  }
+
+  /* BAR CARD */
+  .bar-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .bar-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .bar-card:hover { border-color: var(--gold); }
+
+  .bar-card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .bar-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+  }
+
+  .bar-type-tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .tag-beerhall { background: rgba(201,150,58,0.15); color: var(--gold); border: 1px solid rgba(201,150,58,0.3); }
+  .tag-biergarten { background: rgba(74,140,92,0.15); color: #5dba7a; border: 1px solid rgba(74,140,92,0.3); }
+  .tag-pub { background: rgba(74,100,180,0.15); color: #7b9ede; border: 1px solid rgba(74,100,180,0.3); }
+  .tag-club { background: rgba(180,60,160,0.15); color: #d06bc4; border: 1px solid rgba(180,60,160,0.3); }
+  .tag-cocktail { background: rgba(180,60,60,0.15); color: #d06b6b; border: 1px solid rgba(180,60,60,0.3); }
+
+  .bar-card-body {
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .bar-card-body { grid-template-columns: 1fr; }
+  }
+
+  .bar-info-block { }
+
+  .info-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .info-value {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .info-value.highlight {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .bar-card-footer {
+    padding: 14px 24px;
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bar-card-footer strong {
+    color: var(--cream);
+  }
+
+  /* BADGES */
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .badge.good { border-color: rgba(74,140,92,0.4); color: #5dba7a; }
+  .badge.warn { border-color: rgba(201,150,58,0.4); color: var(--gold); }
+  .badge.loud { border-color: rgba(180,60,60,0.4); color: #d06b6b; }
+
+  /* BEER PILLS */
+  .beer-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .beer-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(201,150,58,0.08);
+    border: 1px solid rgba(201,150,58,0.25);
+    color: var(--gold-light);
+  }
+
+  /* NIGHT PLAN */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .timeline-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  .timeline-place {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .timeline-detail {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* TIPS */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .tip-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+  }
+
+  .tip-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .tip-title {
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .tip-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  .subsection-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ADDRESS */
+  .address {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* WEBSITE LINK */
+  .website-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(201,150,58,0.3);
+    padding: 3px 10px;
+    border-radius: 2px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .website-link:hover {
+    background: rgba(201,150,58,0.12);
+    color: var(--gold-light);
+  }
+
+  .website-link::before {
+    content: '↗';
+    font-size: 10px;
+  }
+
+  /* CLOSING TIME BIG */
+  .closing-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+  }
+
+  /* LARGE GROUP INDICATOR */
+  .group-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .group-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-green { background: #5dba7a; }
+  .dot-amber { background: var(--gold); }
+  .dot-red { background: #d06b6b; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Stag Weekend Guide · June 2026</div>
+  <div class="hero-title">MUNICH<span>Bar Guide</span></div>
+  <div class="hero-sub">For Puddy and the lads — drink well, drink Bavarian</div>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="num">12</div>
+      <div class="label">Venues</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">19</div>
+      <div class="label">Legends</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">4</div>
+      <div class="label">Categories</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">∞</div>
+      <div class="label">Maß</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showSection('beer-halls')">🍺 Beer Halls</div>
+  <div class="nav-tab" onclick="showSection('beer-gardens')">🌳 Beer Gardens</div>
+  <div class="nav-tab" onclick="showSection('pubs-bars')">🎸 Pubs & Bars</div>
+  <div class="nav-tab" onclick="showSection('night-plan')">🗓 Night Plan</div>
+  <div class="nav-tab" onclick="showSection('tips')">💡 Tips</div>
+</div>
+
+<!-- ===================== BEER HALLS ===================== -->
+<div id="beer-halls" class="section active">
+  <div class="section-header">
+    <div class="section-title">Beer Halls</div>
+    <div class="section-desc">The soul of Munich. Long communal tables, brass bands, and steins the size of your head. Start here.</div>
+  </div>
+
+  <div class="bar-grid">
+
+    <!-- Hofbräuhaus -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Hofbräuhaus München</div>
+          <div class="address">Platzl 9, Altstadt · +49 89 290136100</div>
+          <a class="website-link" href="https://www.hofbraeuhaus.de" target="_blank">hofbraeuhaus.de</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">Excellent for large groups</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-beerhall">Beer Hall</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">The world's most famous beer hall, founded in 1589. Cavernous, raucous, and unapologetically touristy — but entirely necessary on a stag. Seats 1,300+ inside, plus another 1,000 in the beer garden. Long communal tables perfect for a group. Oompah brass band plays nightly in the main hall.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Hofbräu Original (Helles)</span>
+            <span class="beer-pill">Hofbräu Dunkel</span>
+            <span class="beer-pill">Hofbräu Weissbier</span>
+            <span class="beer-pill">Maibock (seasonal)</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment</div>
+          <div class="info-value highlight">🎺 Live oompah brass band every evening in the main Schwemme hall</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Closing Time</div>
+          <div class="closing-time">Midnight (daily)</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">Kitchen closes 22:00 · Last orders 23:30</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ Seats 1,300+</span>
+            <span class="badge warn">⚠ Book ahead for peak evenings</span>
+            <span class="badge good">✓ Communal table setup</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Events / June 2026</div>
+          <div class="info-value">World Cup 2026 matches being shown — check schedule. Regular Bavarian Evening events in the banquet hall with folk music &amp; dancing.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> The iconic opener — get here early evening, sink a couple of steins, soak up the madness.
+      </div>
+    </div>
+
+    <!-- Augustiner Stammhaus -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Augustiner Stammhaus</div>
+          <div class="address">Neuhauser Str. 27, Altstadt · historic 1300s building</div>
+          <a class="website-link" href="https://www.augustiner-restaurant.com" target="_blank">augustiner-restaurant.com</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-amber"></div>
+            <span style="color:var(--gold); font-size:12px; font-weight:600;">Good for groups — book in advance</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-beerhall">Beer Hall</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">Bold, opulent, and dating back to the 1300s — this is the place locals actually go. Fewer tourists than the Hofbräuhaus, more authentic Bavarian atmosphere. The vaulted ceilings and dark wood give it serious character. Preferred by many Munich regulars over its more famous rival.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Augustiner Helles</span>
+            <span class="beer-pill">Augustiner Dunkel</span>
+            <span class="beer-pill">Augustiner Weissbier</span>
+            <span class="beer-pill">Augustiner Edelstoff</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment</div>
+          <div class="info-value">No regular live band — but the atmosphere is the entertainment. This place buzzes. Traditional Bavarian pub music on selected evenings.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Closing Time</div>
+          <div class="closing-time">~Midnight</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">Hours vary — check ahead</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge warn">⚠ Advance booking recommended</span>
+            <span class="badge good">✓ More relaxed than Hofbräuhaus</span>
+            <span class="badge good">✓ Local favourite — quality over spectacle</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Why go here</div>
+          <div class="info-value">Augustiner is Munich's oldest operating brewery. Drinking here is the genuine article. Locals rate it above everything else.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> Day 2 afternoon session — less mad than Hofbräuhaus, better beer (subjectively), more Munich soul.
+      </div>
+    </div>
+
+    <!-- Tegernseer Tal -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Tegernseer Tal</div>
+          <div class="address">Tal 12, Altstadt · established 1400s</div>
+          <a class="website-link" href="https://www.tegernseer-tal8.com/en" target="_blank">tegernseer-tal8.com</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">Very large group friendly</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-beerhall">Beer Hall</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">Old-world rustic atmosphere with a stunning apex glass roof over the main hall — the kind of space that makes you feel like you're inside a Bavarian cathedral dedicated to beer. Long tables throughout, lively but not as overwhelmingly chaotic as Hofbräuhaus. Open till the early hours of the morning.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Tegernseer Spezial</span>
+            <span class="beer-pill">Tegernseer Hell</span>
+            <span class="beer-pill">Tegernseer Dunkel</span>
+            <span class="beer-pill">Seasonal specials</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment</div>
+          <div class="info-value">Traditional Bavarian pub atmosphere. Live folk music on selected evenings — check the monthly programme.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Closing Time</div>
+          <div class="closing-time">Late hours (early AM)</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">One of Munich's later-closing beer halls</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ Long communal tables — built for groups</span>
+            <span class="badge good">✓ Later closing than most beer halls</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Standout feature</div>
+          <div class="info-value">The glass apex roof is genuinely spectacular — impressive during the day, beautiful in the evening light. A great photo moment for the group.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> Continuing the beer hall crawl after Hofbräuhaus — slightly calmer, longer hours, cracking architecture.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== BEER GARDENS ===================== -->
+<div id="beer-gardens" class="section">
+  <div class="section-header">
+    <div class="section-title">Beer Gardens</div>
+    <div class="section-desc">Outdoors, under chestnut trees, with a Maß in hand. The most Bavarian experience possible. June weather should be ideal.</div>
+  </div>
+
+  <div class="bar-grid">
+
+    <!-- Augustiner-Keller -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Augustiner-Keller</div>
+          <div class="address">Arnulfstr. 52, near Hauptbahnhof · 089/594393</div>
+          <a class="website-link" href="https://www.augustinerkeller.de/en" target="_blank">augustinerkeller.de</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">Excellent for large groups — one of the best in Munich</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-biergarten">Biergarten</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">5,000 seats under 100+ chestnut trees — Munich's third largest beer garden. Founded 1812. The beer comes straight from wooden barrels — a bell rings every time a new barrel is tapped. Mix of locals and visitors, warm and lively without being overwhelmingly touristy. Has a cosy underground storage cellar for rainy days.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Augustiner Edelstoff (wooden barrel)</span>
+            <span class="beer-pill">Augustiner Helles</span>
+            <span class="beer-pill">Augustiner Dunkel</span>
+            <span class="beer-pill">Augustiner Weissbier</span>
+            <span class="beer-pill">Radler</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment</div>
+          <div class="info-value highlight">🎵 Live music on select days — check their events page. The barrel-tapping bell ceremony is a moment in itself.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Opening Hours</div>
+          <div class="closing-time">11am – Midnight</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">Beer garden: to midnight · Restaurant: 10am–1am · Cellar bar: 4pm–1am</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ 5,000 seats — vast space</span>
+            <span class="badge good">✓ Reservations available for groups</span>
+            <span class="badge warn">⚠ Self-service section — bring your own food if you like</span>
+            <span class="badge good">✓ 5 min walk from main station</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">June 2026 Note</div>
+          <div class="info-value">World Cup 2026 coverage may be shown — check ahead. Circus Krone is next door all summer — adds to the festive atmosphere.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> Afternoon / early evening session Day 1 — arrive, grab a Maß from the barrel, find 5,000 of your newest friends.
+      </div>
+    </div>
+
+    <!-- Hirschgarten -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Königlicher Hirschgarten</div>
+          <div class="address">Hirschgarten 1, Nymphenburg · Open daily 11am–midnight</div>
+          <a class="website-link" href="https://hirschgarten.de/en" target="_blank">hirschgarten.de</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">World's largest beer garden — 8,000+ seats</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-biergarten">Biergarten</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">The world's largest beer garden — 8,000 seats under giant chestnut trees, with actual deer in an adjacent park. Huge, sprawling, and genuinely magical on a summer evening. Less touristy than the city-centre spots, more of a local institution. 5 big outdoor screens for football. Kitchen runs till 10pm.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Augustiner Edelstoff (wooden barrel)</span>
+            <span class="beer-pill">Tegernseer Spezial Hell</span>
+            <span class="beer-pill">Radler</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment — JUNE 2026</div>
+          <div class="info-value highlight">🎺 Brass band music every Sunday & Bank Holiday, 12–4pm. Twilight pint with live music every Tuesday & Thursday, 6–8pm. World Cup 2026 on the big screens.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Opening Hours</div>
+          <div class="closing-time">11am – Midnight</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">Kitchen until 10pm · Restaurant seats 320, open all year</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ 8,000+ seats — no issue fitting 19</span>
+            <span class="badge good">✓ Self-service = no wait for drinks</span>
+            <span class="badge warn">⚠ 20 min from city centre by S-Bahn</span>
+            <span class="badge good">✓ Big screens for World Cup</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Tradition</div>
+          <div class="info-value">Guests wash their own beer steins — a proper old-school tradition. Don't miss the Steckerlfisch (grilled fish on a stick) from Fischer-Vroni stall.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> A long Sunday afternoon in the sun with the whole group — brass band, cold Maß, World Cup on the screens. Absolute peak Munich.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== PUBS & BARS ===================== -->
+<div id="pubs-bars" class="section">
+  <div class="section-header">
+    <div class="section-title">Pubs & Bars</div>
+    <div class="section-desc">When you need a break from steins and want live music, sports on screen, or a proper cocktail. These are the spots.</div>
+  </div>
+
+  <div class="bar-grid">
+
+    <!-- Kilian's -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Kilian's Irish Pub</div>
+          <div class="address">Frauenplatz 11, Altstadt (views of the Frauenkirche) · 089 / 242 198 99</div>
+          <a class="website-link" href="https://kiliansirishpub.de" target="_blank">kiliansirishpub.de</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">Large groups welcome — book ahead on weekends</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-pub">Irish Pub</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">22 years as Munich's best Irish pub — and it earns the rep. Live music every single night of the week. Sports on every screen. English-speaking staff. Karaoke evenings. Outdoor terrace with a view of the Frauenkirche. An absolute stag-do staple — loud, fun, and welcoming to rowdy groups.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Guinness</span>
+            <span class="beer-pill">Augustiner Lager</span>
+            <span class="beer-pill">Kilkenny</span>
+            <span class="beer-pill">Smithwick's</span>
+            <span class="beer-pill">International bottled selection</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment — LIVE EVERY NIGHT</div>
+          <div class="info-value highlight">🎸 Mon/Wed: solo artists & duos · Thu/Fri/Sat: full bands from 9pm. Irish folk, rock, RnB, pop, funk. Karaoke nights. World Cup 2026 shown live. Rugby coverage (NZ vs France/Ireland in July).</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Opening Hours</div>
+          <div class="closing-time">Mon–Thu: 4pm–1am</div>
+          <div class="closing-time">Fri–Sat: 11am–3am</div>
+          <div class="closing-time">Sun: 11am–1am</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ Can accommodate large groups</span>
+            <span class="badge warn">⚠ Busy on weekends — reserve same day before 4–5pm</span>
+            <span class="badge good">✓ English-speaking staff</span>
+            <span class="badge good">✓ Outdoor terrace area</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Stag Bonus</div>
+          <div class="info-value">Karaoke sessions are famous in Munich — great for getting the group going. Ned Kelly's (sister bar) has Brazilian football party nights running alongside.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> The "bridge" stop between beer halls and clubs — live music, great craic, sports on screen, cold Guinness.
+      </div>
+    </div>
+
+    <!-- Zum Dürnbräu -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Zum Dürnbräu</div>
+          <div class="address">Tal 21, Altstadt · Since 1487</div>
+          <a class="website-link" href="https://www.zumduernbraeu.de" target="_blank">zumduernbraeu.de</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-amber"></div>
+            <span style="color:var(--gold); font-size:12px; font-weight:600;">Mid-size groups best — intimate setting</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-beerhall">Historic Tavern</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">One of Munich's oldest bars — a Bavarian inn since 1487. Wood-panelled walls, arched ceilings, and a beautiful secluded inner courtyard. The antithesis of the tourist circuit — quiet, historic, proper. Perfect for a pint with a bit of character before the chaos begins.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Traditional Bavarian lagers</span>
+            <span class="beer-pill">Weissbier</span>
+            <span class="beer-pill">Seasonal offerings</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment</div>
+          <div class="info-value">Traditional Bavarian atmosphere — the venue itself is the entertainment. No DJ, no band, just 500+ years of history and good beer.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Closing Time</div>
+          <div class="closing-time">~11pm / Midnight</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge warn">⚠ Better suited for 10–12 max</span>
+            <span class="badge good">✓ Beautiful inner courtyard for summer</span>
+            <span class="badge good">✓ Near Hofbräuhaus — easy to combine</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Why go here</div>
+          <div class="info-value">This is where you go for your first quiet pint of the trip. Drink a beer in a building that's been serving beer since before Shakespeare was born. Respect.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> Small group splinter for an afternoon drink — the historic inner courtyard on a sunny June afternoon is hard to beat.
+      </div>
+    </div>
+
+    <!-- Viktualienmarkt Beer Garden -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Viktualienmarkt Beer Garden</div>
+          <div class="address">Viktualienmarkt 6, Altstadt · Central market square</div>
+          <a class="website-link" href="https://www.biergarten-viktualienmarkt.de" target="_blank">biergarten-viktualienmarkt.de</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">Open-air, self-service — easy for large groups</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-biergarten">Biergarten</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">A small, well-loved beer garden in the heart of Munich's famous daily market. Six local breweries rotate through on a seasonal basis — meaning the beer on tap changes throughout the year. Surrounded by market stalls, perfect for grazing on food while drinking. Locals love it.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">6 Munich breweries rotate seasonally</span>
+            <span class="beer-pill">Helles · Dunkel · Weissbier</span>
+            <span class="beer-pill">Always something local on</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment</div>
+          <div class="info-value">Occasional small acoustic sets. The market atmosphere itself is the experience — pick up pretzels, sausages, cheese from the stalls around you.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Closing Time</div>
+          <div class="closing-time">~10pm</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">Closes when the market winds down</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ Self-service — easy to split up and regroup</span>
+            <span class="badge good">✓ Open-air — loads of space in summer</span>
+            <span class="badge warn">⚠ No reservations — first come first served</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Bonus</div>
+          <div class="info-value">Right in the heart of the old town — easy starting point before heading to Hofbräuhaus or Kilian's. Grab a Maß, graze the market, move on.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> Afternoon warm-up on Day 1 or 2 — a beer with market snacks before the real session starts.
+      </div>
+    </div>
+
+    <!-- Löwenbräukeller -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Löwenbräukeller</div>
+          <div class="address">Nymphenburger Str. 2, Maxvorstadt · +49 89 526021</div>
+          <a class="website-link" href="https://loewenbraeukeller.com/en" target="_blank">loewenbraeukeller.com</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">Exceptional for large groups — purpose-built event hall up to 2,000</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-beerhall">Beer Hall</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">A Munich institution since 1883 — the grandest beer hall most tourists miss. Magnificent Bavarian architecture right on Stiglmaierplatz, with a huge banquet hall, a warren of smaller rooms, and a classic shaded chestnut beer garden for summer. Fewer tourists than the Altstadt halls, livelier local crowd, and steeped in proper Munich history. Live music adds to the already festive atmosphere most evenings.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Löwenbräu Original (Helles)</span>
+            <span class="beer-pill">Löwenbräu Dunkel</span>
+            <span class="beer-pill">Löwenbräu Weissbier</span>
+            <span class="beer-pill">Kellerbier Dunkel</span>
+            <span class="beer-pill">Seasonal Oktoberfestbier</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Entertainment</div>
+          <div class="info-value highlight">🎺 Live music on selected evenings — traditional Bavarian band in the main hall. The grand banquet hall has hosted everything from Bavarian political satire to massive group celebrations for over a century.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Opening Hours</div>
+          <div class="closing-time">Daily: 10am – Midnight</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">Beer garden also open in good weather</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ Rooms available for 10–2,000 people</span>
+            <span class="badge good">✓ Private room options for groups</span>
+            <span class="badge good">✓ Reservations actively welcomed</span>
+            <span class="badge good">✓ Event configurator on website</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Why Go Here</div>
+          <div class="info-value">Genuinely one of the most impressive beer hall buildings in Munich — and because it sits just outside the tourist centre at Stiglmaierplatz, the crowd is almost entirely local. You drink Löwenbräu at its freshest, right at the brewery's historic home.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> Saturday evening before heading home — or as your Friday warm-up before the Altstadt crawl. Book a room for the group and treat it as your base for the night.
+      </div>
+    </div>
+
+    <!-- Paulaner Bräuhaus -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Paulaner Bräuhaus</div>
+          <div class="address">Kapuzinerplatz 5, Ludwigsvorstadt · +49 89 5446110</div>
+          <a class="website-link" href="https://www.paulaner-brauhaus-muenchen.com" target="_blank">paulaner-brauhaus-muenchen.com</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-amber"></div>
+            <span style="color:var(--gold); font-size:12px; font-weight:600;">Good for groups — book a table, especially in summer</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-beerhall">Brewery Tap</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">The flagship tap for one of Munich's most famous breweries — and uniquely, they brew on-site, with gleaming copper kettles visible from the bar. Stunning architecture inside: huge columns, soaring arched windows, long communal tables, and an open kitchen. A large summer beer garden outside. Calmer and more neighbourhood-feeling than the tourist-heavy Altstadt halls — locals genuinely come here.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Paulaner Helles (house)</span>
+            <span class="beer-pill">Paulaner Weissbier</span>
+            <span class="beer-pill">Zwicklbier (unfiltered)</span>
+            <span class="beer-pill">Rotbier (amber)</span>
+            <span class="beer-pill">Salvator (dark bock)</span>
+            <span class="beer-pill">Radler</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Unique Feature</div>
+          <div class="info-value highlight">🍺 Beer brewed on the premises — the brewhouse is right by the bar. You can watch the brewmaster at work while you drink the results. One of very few places in Munich where the beer has genuinely never travelled.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Opening Hours</div>
+          <div class="closing-time">Daily: 11am – Midnight</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ Multi-floor venue — plenty of space</span>
+            <span class="badge warn">⚠ Book ahead for groups of 15+</span>
+            <span class="badge good">✓ Large beer garden for summer</span>
+            <span class="badge good">✓ English-friendly staff</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Food Note</div>
+          <div class="info-value">The Schweinshaxe, Zwickl-braised beef goulash, and sausage pans are outstanding. Larger portions than most — worth eating here rather than just drinking through.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> A proper lunch session on Day 1 or 2 — watch the brewer, drink the result, eat something large, feel like a king of Bavaria.
+      </div>
+    </div>
+
+    <!-- Weisses Bräuhaus im Tal -->
+    <div class="bar-card">
+      <div class="bar-card-header">
+        <div>
+          <div class="bar-name">Weisses Bräuhaus im Tal</div>
+          <div class="address">Tal 7, Altstadt · 3-min walk from Marienplatz · +49 89 2901380</div>
+          <a class="website-link" href="https://www.weisses-brauhaus.de" target="_blank">weisses-brauhaus.de</a>
+          <div class="group-indicator">
+            <div class="group-dot dot-green"></div>
+            <span style="color:#5dba7a; font-size:12px; font-weight:600;">Large groups welcome — easy to walk in at midday</span>
+          </div>
+        </div>
+        <div class="bar-type-tag tag-beerhall">Wheat Beer Hall</div>
+      </div>
+      <div class="bar-card-body">
+        <div class="bar-info-block">
+          <div class="info-label">The Vibe</div>
+          <div class="info-value">The home of Schneider Weisse — Germany's oldest wheat beer brewery and widely considered its finest. A Munich institution since 1872, with rustic wooden beams, long communal tables, a lively buzz, and all the Bavarian character you'd want. Favoured by locals and visiting beer enthusiasts alike. Located right in the Altstadt, extremely easy to combine with Hofbräuhaus or Tegernseer Tal on a crawl.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Beers on Offer</div>
+          <div class="beer-list">
+            <span class="beer-pill">Schneider Weisse Original</span>
+            <span class="beer-pill">Schneider Weisse Tap 7 (flagship)</span>
+            <span class="beer-pill">Aventinus (strong wheat doppelbock)</span>
+            <span class="beer-pill">Schneider Weisse Tap 1 (light)</span>
+            <span class="beer-pill">Lovebeer (passion fruit &amp; lime)</span>
+            <span class="beer-pill">Seasonal specials</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Why it's Different</div>
+          <div class="info-value highlight">🌾 Entirely wheat beer focused — the best range of Weissbier you'll find anywhere. The Aventinus (dark wheat doppelbock at 8.2%) is a legendary beer. If the group hasn't tried proper Weissbier, this is where to do it.</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Opening Hours</div>
+          <div class="closing-time">Daily: 10am – Midnight</div>
+          <div class="info-value" style="font-size:12px; color:var(--muted); margin-top:4px;">Mains approx. €14–26</div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Large Group Notes</div>
+          <div class="badges">
+            <span class="badge good">✓ Communal tables — built for sharing</span>
+            <span class="badge good">✓ Groups easily accommodated at lunch</span>
+            <span class="badge warn">⚠ Evenings get busy — book ahead</span>
+            <span class="badge good">✓ 3 min from Marienplatz</span>
+          </div>
+        </div>
+        <div class="bar-info-block">
+          <div class="info-label">Food Highlight</div>
+          <div class="info-value">The Weisswurst (white sausage) breakfast is a Munich tradition — served before noon with sweet mustard and a Weissbier. The pork knuckle and crown meat (Kronfleisch) are also worth ordering.</div>
+        </div>
+      </div>
+      <div class="bar-card-footer">
+        <strong>Best for:</strong> Anyone who wants to drink their way through Munich's six breweries — this covers Schneider Weisse and gives you a genuinely different beer experience from the other halls.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== NIGHT PLAN ===================== -->
+<div id="night-plan" class="section">
+  <div class="section-header">
+    <div class="section-title">Suggested Night Plan</div>
+    <div class="section-desc">A rough itinerary for each night. Adapt freely — you're 19 lads in Munich, not a guided tour.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="subsection-title">🍺 Friday Night — The Classic Munich Crawl</div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">3:00 – 5:00 PM</div>
+      <div class="timeline-place">Augustiner-Keller Beer Garden</div>
+      <div class="timeline-detail">Arrive, claim tables, first Maß from the wooden barrel. Listen for the bell when a new barrel is tapped. 5 min walk from the Hauptbahnhof — easy first stop off the plane.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">5:30 – 8:00 PM</div>
+      <div class="timeline-place">Hofbräuhaus</div>
+      <div class="timeline-detail">Head into the Schwemme (main hall). The brass band will be in full swing. Communal tables — you will meet strangers. They will become your friends. Order Maß, eat Schweinshaxe, make noise. Book a table in advance for the group.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">8:30 – 11:00 PM</div>
+      <div class="timeline-place">Tegernseer Tal</div>
+      <div class="timeline-detail">5-minute walk from Hofbräuhaus. Continue into the spectacular glass-roofed hall. A different beer (Tegernseer vs Hofbräu) — do the comparison. Late-closing beer hall means no rush.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">11:00 PM – 2:00 AM</div>
+      <div class="timeline-place">Kilian's Irish Pub</div>
+      <div class="timeline-detail">Full band on stage. Cold Guinness. Sports on every screen. This is where you end up singing until you lose your voice. Karaoke downstairs if the band stops. Closes 3am Friday.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">1:00 AM+</div>
+      <div class="timeline-place">Wherever the night takes you</div>
+      <div class="timeline-detail">Munich has late-night bars scattered through the Glockenbach and Altstadt areas. Follow the locals, find a bar with the lights still on, and count your Maß.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="subsection-title">☀️ Saturday — The Long Day</div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">Midday – 3:00 PM</div>
+      <div class="timeline-place">Viktualienmarkt Beer Garden</div>
+      <div class="timeline-detail">Recover with a Maß and market snacks. Self-service, no booking needed, right in the old town. Rotating local brewery on tap. Perfect hangover management.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">3:00 – 7:00 PM</div>
+      <div class="timeline-place">Hirschgarten</div>
+      <div class="timeline-detail">The world's largest beer garden on a summer afternoon — 8,000 seats, brass band if it's a Sunday, World Cup on 5 big screens. Take the S-Bahn to Hirschgarten stop. This is the money session of the weekend.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">7:30 – 10:00 PM</div>
+      <div class="timeline-place">Augustiner Stammhaus</div>
+      <div class="timeline-detail">The locals' choice — less tourist, more character. Try the Augustiner Edelstoff in the original Stammhaus setting. Vaulted ceilings, candlelight, proper Munich atmosphere.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">10:00 PM – close</div>
+      <div class="timeline-place">Löwenbräukeller or Kilian's</div>
+      <div class="timeline-detail">Löwenbräukeller closes midnight and is a spectacular send-off — live music, proper Löwenbräu beer in a grand hall. Or head back to Kilian's for the band and a nightcap. Either way, a fitting end to the weekend.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TIPS ===================== -->
+<div id="tips" class="section">
+  <div class="section-header">
+    <div class="section-title">Practical Tips</div>
+    <div class="section-desc">Things you'll want to know before you drink your way across Munich.</div>
+  </div>
+
+  <div class="tips-grid">
+
+    <div class="tip-card">
+      <div class="tip-icon">📅</div>
+      <div class="tip-title">Book Ahead for Groups</div>
+      <div class="tip-text">For the Hofbräuhaus and Kilian's with 19 people, email or call ahead. Beer halls are more relaxed about walk-ins but weekends in June fill fast. Augustiner-Keller has an online event configurator for group bookings.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">⚽</div>
+      <div class="tip-title">World Cup 2026 is On</div>
+      <div class="tip-text">The FIFA World Cup runs June 11 – July 19, 2026. Matches will be shown across Munich — beer gardens, Kilian's, and the Hirschgarten's big screens. This will make the city even more electric. Check match schedules for your dates.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🍺</div>
+      <div class="tip-title">The Maß Explained</div>
+      <div class="tip-text">A Maß is 1 litre. That's your unit of currency in Munich. Budget roughly €10–13 per Maß in beer halls, slightly less in beer gardens. Weissbier (wheat beer) usually comes in 0.5L glasses. Order by pointing and holding up fingers.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🚇</div>
+      <div class="tip-title">Getting Around</div>
+      <div class="tip-text">The U-Bahn and S-Bahn run until around 1:30am, then night buses every 30 minutes. Taxis and Uber are plentiful after that. The Hirschgarten is S-Bahn Hirschgarten stop. Most beer halls are walkable from Marienplatz.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🌾</div>
+      <div class="tip-title">Helles vs Weissbier vs Dunkel</div>
+      <div class="tip-text">Munich's three main styles: Helles (pale lager, crisp and easy), Weissbier/Weiss (wheat beer, fruity and cloudy — the local favourite), and Dunkel (dark lager, malty and smooth). Try all three over the weekend. Schneider Aventinus is the wildcard — a dark wheat doppelbock at 8.2% that drinks dangerously easily.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🥨</div>
+      <div class="tip-title">Food Strategy</div>
+      <div class="tip-text">Beer halls serve food late (Hofbräuhaus kitchen to 10pm). The Schweinshaxe (pork knuckle), Brez'n (pretzels), and Wurstsalat are essential. In beer gardens, self-service counters sell grilled food. Hirschgarten's Steckerlfisch (grilled fish) is legendary.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">💰</div>
+      <div class="tip-title">Budget Guide</div>
+      <div class="tip-text">Beer halls: €10–13/Maß. Beer gardens: €9–12/Maß. Irish pub pints: €7–9. Club entry: €10–20. Club drinks: €12–18. A solid night in beer halls costs about €50–70 all in. Clubs add another €50–80. Munich is cheaper than London for the quality on offer.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🎺</div>
+      <div class="tip-title">Oompah Etiquette</div>
+      <div class="tip-text">When the brass band plays at the Hofbräuhaus, everyone bangs their stein on the table in time. You are not exempt. Learn "Prost!" (cheers), "Noch ein Bier bitte" (another beer please), and "Wo ist die Toilette?" (where is the toilet). These three phrases will carry you through.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-icon">🌧</div>
+      <div class="tip-title">June Weather Plan B</div>
+      <div class="tip-text">June in Munich is usually warm (18–25°C) but afternoon thunderstorms aren't unheard of. Augustiner-Keller has a fantastic underground cellar that opens if the beer garden closes due to weather. All beer halls are indoors. You will not go thirsty.</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
